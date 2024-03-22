@@ -93,15 +93,15 @@
 
 ## Repository내에 Packages:
 
-  - `ur` - Meta-package that provides a single point of installation for the released packages.
-  - `ur_bringup` - launch file and run-time configurations, e.g. controllers (DEPRECATED).
-  - `ur_calibration` - tool for extracting calibration information from a real robot.
-  - `ur_controllers` - implementations of controllers specific for UR robots.
-  - `ur_dashboard_msgs` - package defining messages used by dashboard node.
-  - `ur_moveit_config` - example MoveIt configuration for UR robots.
-  - `ur_robot_driver` - driver / hardware interface for communication with UR robots.
+  - `ur` - 릴리즈 패키지을 위해 설치 지점을 제공하는 Meta-package
+  - `ur_bringup` - 파일 launch 및 run-time 설정 예: controllers (DEPRECATED).
+  - `ur_calibration` - 실제 robot에서 calibration 정보를 추출하는 도구
+  - `ur_controllers` - UR 로봇 전용 컨트롤러 구현
+  - `ur_dashboard_msgs` - dashboard node에서 사용하는 메시지를 정의하는 패키지
+  - `ur_moveit_config` - UR 로봇용 MoveIt 구성 예제
+  - `ur_robot_driver` - UR 로봇과 통신하기 위한 드라이버 / 하드웨어 인터페이스
 
-Deprecation: The `ur_bringup` package is deprecated and will be removed from Iron Irwini on.
+사용중단: `ur_bringup` package는 Iron Irwini에서 제거될 예정입니다.
 
 ## 시작하기
 
