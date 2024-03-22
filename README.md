@@ -1,16 +1,15 @@
 # Universal Robots ROS2 Driver
-
-Universal Robots has become a dominant supplier of lightweight, robotic manipulators for industry, as well as for scientific research and education.
+유니버설 로봇은 산업뿐만 아니라 과학 연구 및 교육 분야에서 경량 협동 로봇팔 공급업체로 주도적인 위치를 차지하고 있습니다.
 <center><img src="ur_robot_driver/doc/installation/initial_setup_images/e-Series.jpg" alt="Universal Robot e-Series family" style="width: 80%;"/></center>
 
-This is one of the very first ROS2 manipulator drivers. Some of the new features are enabled by ROS2 and include decreased latency, improved security, and more flexibility regarding middleware configuration. The package contains launch files to quickly get started using the driver as a standalone version or in combination with MoveIt2
+이 드라이버는 최초의 ROS2 manipulator 드라이버 중 하나입니다. ROS2를 통해 구현된 새로운 기능으로는 지연 시간 감소, 향상된 보안, 미들웨어 설정에 대한 더 높은 유연성 등이 있습니다. 이 패키지에는 드라이버를 독립 사용 버전 혹은 MoveIt2와 함께 사용하여 빠르게 시작할 수 있는 launch 파일이 포함되어 있습니다.
 
-This driver is developed on top of [Universal_Robots_Client_Library](https://github.com/UniversalRobots/Universal_Robots_Client_Library) and support some key cobot functionalities like; pause at emergency stop, safeguard stop, automatic speed scaling to avoid violate the safety setting and manually speed scaling from the teach pendant. In addition the externalControl URCap makes it possible to include ROS2 behaviors in the robot program.
+이 드라이버는 [Universal_Robots_Client_Library](https://github.com/UniversalRobots/Universal_Robots_Client_Library) 기반으로 개발되었으며 긴급 정지시 일시 정지, 안전 가드 정지, 안전 설정 위반 방지를 위한 자동 속도 조절 및 티치펜던트에서 수동 속도 조절과 같은 핵심 협동 로봇 기능을 지원합니다. 또한 externalControl URCap을 통해 로봇 프로그램에 ROS2 동작을 포함시키는 것이 가능하다.
 
-The driver is compatible across the entire line of UR robots -- from 3 kg payload to 16 kg payload and includes both the CB3 and the E-series.
+이 드라이버는 3kg 부하량에서 16kg payload까지 모든 유니버설 로봇 라인과 호환되며 CB3 및 E-시리즈 모두 포함됩니다.
 
 
-Check also [presentations and videos](ur_robot_driver/doc/resources/README.md) about this driver.
+이 드라이버 관련해서 [프리젠테이션 및 비디오](ur_robot_driver/doc/resources/README.md) 참고하세요.
 
 
 ## Build Status
@@ -76,24 +75,23 @@ Check also [presentations and videos](ur_robot_driver/doc/resources/README.md) a
 </table>
 
 
-**NOTE**: There are two build stages checking current and future compatibility of the driver.
+**NOTE**: 드라이버의 현재 및 미래 호환성을 검사하는 두 가지 빌드 단계가 있습니다.
 
-1. Binary builds - against released packages (main and testing) in ROS distributions. Shows that direct local build is possible.
+1. Binary 빌드 - ROS 배포판의 릴리스된 패키지(main 및 testing)를 대상으로 합니다. 로컬에서 직접 빌드가 가능하다는 것을 보여줍니다.
 
-   Uses repos file: `src/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Driver-not-released.<ros-distro>.repos`
+   사용하는 repos 파일: `src/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Driver-not-released.<ros-distro>.repos`
 
-1. Semi-binary builds - against released core ROS packages (main and testing), but the immediate dependencies are pulled from source.
-   Shows that local build with dependencies is possible and if fails there we can expect that after the next package sync we will not be able to build.
+1. Semi-binary 빌드 - 릴리스된 core ROS 패키지(main 및 testing)를 대상으로 하지만, 직접적인 종속성은 소스에서 가져옵니다. 로컬에서 종속성과 함께 빌드가 가능하다는 것을 보여주며, 실패하면 다음 패키지 동기화 후 빌드가 불가능할 것으로 예상됩니다.
 
-   Uses repos file: `src/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Driver.repos`
+   사용하는 repos 파일: `src/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Driver.repos`
 
-Each of these stages also performs integration tests using ursim. In order to execute these tests locally, they have to be enabled:
+각 단계는 또한 ursim을 사용하여 통합 테스트를 수행합니다. 이 테스트를 로컬에서 실행하려면 다음과 같이 활성화해야 합니다.:
   ```
   colcon build --packages-select ur_robot_driver --cmake-args -DUR_ROBOT_DRIVER_BUILD_INTEGRATION_TESTS=On
   ```
 
 
-## Packages in the Repository:
+## Repository내에 Packages:
 
   - `ur` - Meta-package that provides a single point of installation for the released packages.
   - `ur_bringup` - launch file and run-time configurations, e.g. controllers (DEPRECATED).
@@ -105,14 +103,14 @@ Each of these stages also performs integration tests using ursim. In order to ex
 
 Deprecation: The `ur_bringup` package is deprecated and will be removed from Iron Irwini on.
 
-## Getting Started
+## 시작하기
 
-For getting started, you'll basically need three steps:
+시작하려면 기본적으로 3개 단계가 필요하다:
 
-1. **Install the driver** (see below). You can either install this driver from binary packages or build it from source. We recommend a
+1. **driver 설치** (see below). You can either install this driver from binary packages or build it from source. We recommend a
 binary package installation unless you want to join development and submit changes.
 
-2. **Start & Setup the robot**. Once you've installed the driver, [setup the
+2. **robot 시작 & 설정하기**. Once you've installed the driver, [setup the
    robot](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/installation/robot_setup.html)
 
 Please do this step carefully and extract the calibration as explained
@@ -124,11 +122,11 @@ robot](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/usage.ht
 that will behave almost exactly like the real robot.
 
 
-3. **Start the driver**. See the [usage
+3. **driver 시작**. See the [usage
    documentation](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/usage.html) for
    details.
 
-### Install from binary packages
+### binary 패캐지에서 설치하기
 1. [Install ROS2](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html). This
       branch supports only ROS2 Humble. For other ROS2 versions, please see the respective
       branches.
@@ -138,32 +136,28 @@ that will behave almost exactly like the real robot.
    ```
 
 ### Build from source
-Before building from source please make sure that you actually need to do that. Building from source
-might require some special treatment, especially when it comes to dependency management.
-Dependencies might change from time to time. Upstream packages (such as the library) might change
-their features / API which require changes in this repo. Therefore, this repo's source builds might
-require upstream repositories to be present in a certain version as otherwise builds might fail.
-Starting from scratch following exactly the steps below should always work, but simply pulling and
-building might fail occasionally.
+소스 코드로부터 빌드를 하기 전에 실제로 이렇게 하는 것이 필요한 것인지 확인하십시오.
+소스 코드로부터 빌드하는 것은 특히 의존성 관리와 관련하여 특별한 처리가 필요할 수 있습니다. 의존성은 시간이 지남에 따라 변경될 수 있습니다. 상위 패키지(라이브러리 등)는 기능/API를 변경하여 이 저장소에서 변경 사항이 필요할 수 있습니다. 
+따라서 이 저장소의 소스 빌드는 특정 버전의 상위 저장소가 있어야 빌드가 실패하지 않도록 할 수 있습니다.
+아래 단계를 정확히 따라 처음부터 시작하면 항상 작동해야 하지만, 간단히 가져와서 빌드하는 것은 때때로 실패할 수 있습니다.
 
-1. [Install ROS2](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html).
-   branch supports only ROS2 Humble. For other ROS2 versions, please see the respective
-   branches.
+1. [ROS2 설치](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html).
+   ROS2 humblea만 지원하는 brach 입니다.
 
    Once installed, please make sure to actually [source ROS2](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html#source-the-setup-files) before proceeding.
 
-3. Make sure that `colcon`, its extensions and `vcs` are installed:
+3. `colcon` 확장 및 `vcs`를 설치:
    ```
    sudo apt install python3-colcon-common-extensions python3-vcstool
    ```
 
-4. Create a new ROS2 workspace:
+4. 새로운 ROS2 workspace 생성하기:
    ```
    export COLCON_WS=~/workspace/ros_ur_driver
    mkdir -p $COLCON_WS/src
    ```
 
-5. Clone relevant packages, install dependencies, compile, and source the workspace by using:
+5. 관련 package 복제, 의존성 설치, 컴파일, workspace를 source 하기:
    ```
    cd $COLCON_WS
    git clone -b humble https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git src/Universal_Robots_ROS2_Driver
@@ -174,8 +168,7 @@ building might fail occasionally.
    source install/setup.bash
    ```
 
-6. When consecutive pulls leads to build errors, please make sure to update the upstream packages before
-   filing an issue:
+6. 연속적인 pull로 빌드 오류를 발생시키는 경우, 이슈를 등록하기 전에 upstream 패키지를 업데이트했는지 확인하십시오.:
    ```
    cd $COLCON_WS
    vcs import src --skip-existing --input src/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Driver-not-released.${ROS_DISTRO}.repos
@@ -183,27 +176,27 @@ building might fail occasionally.
    rosdep install --ignore-src --from-paths src -y
    ```
 
-## MoveIt! support
+## MoveIt! 지원
 
-[MoveIt!](https://moveit.ros.org) support is built-in into this driver already.
-Watch MoveIt in action with the Universal Robots ROS2 driver:
+이 드라이버에는 이미 [MoveIt!](https://moveit.ros.org) 지원이 내장되어 있습니다.
+MoveIt과 Universal Robots ROS2 driver 연동 보기:
 
 [![Video: MoveIt2 Demo](https://img.youtube.com/vi/d_cVXoZZ52w/0.jpg)](https://www.youtube.com/watch?v=d_cVXoZZ52w)
 
-  *The video shows free-space trajectory planning around a modeled collision scene object using the MoveIt2 MotionPlanning widget for Rviz2.*
+  *이 영상은 Rviz2용 MoveIt2 Motion Planning 위젯을 사용하여 모델링된 충돌 장면 개체 주위의 자유공간 궤적 계획을 보여줍니다.*
 
-See the [MoveIt!
+상세한 내용은 [MoveIt!
 section](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/usage.html#using-moveit)
 of the [Usage guide](https://docs.ros.org/en/ros2_packages/humble/api/ur_robot_driver/usage.html)
-for details.
+을 참고하세요.
 
-## Expected Changes in the Near Future
+## 향후 변경 사항
 
-- Trajectory control currently only supports position commands. In the future, velocity control will be added.
+- 현재 궤적 제어는 position 명령만 지원합니다. 향후 velocity 제어가 추가됩니다.
 
 
-## Contributor Guidelines
-Code is auto-formatted with clang-format 14 whenever a git commit is made. Please ensure these dependencies are installed:
+## 기여자 가이드라인
+Git 커밋이 발생할 때마다 코드는 clang-format 14를 사용하여 자동으로 포맷됩니다. 다음 종속성이 설치되어 있는지 확인하십시오:
   ```
   pip3 install pre-commit
   sudo apt install clang-format-14
